@@ -1,6 +1,7 @@
 import React from "react";
 import useStorage from "./hooks";
-import { Field, Product, StorageDiv } from "./styles";
+import InputNumber from "../../Components/InputNumber";
+import { Field, Product, StorageDiv, Image } from "./styles";
 const Storage = () => {
   const storage = useStorage();
 
@@ -12,11 +13,11 @@ const Storage = () => {
         const { item, description, price, id, quantity, image } = product;
         return (
           <Product key={id}>
-            <img src={image} width="50px" height="50px" />
+            <Image src={image} />
             <Field value={item} onChange={(e) => storage.setData()} />
             <Field value={description} />
-            <Field value={price} />
-            <Field value={quantity} />
+            <InputNumber value={price} label="Price" />
+            <InputNumber value={quantity} label="Quantity" />
           </Product>
         );
       })}
